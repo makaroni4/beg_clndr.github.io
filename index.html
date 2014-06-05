@@ -29,6 +29,10 @@
         checkbox.prop("checked", !checkbox.prop("checked"));
       })
 
+      $(".checkbox input").click(function(){
+        $(this).prop("checked", !$(this).prop("checked"));
+      })
+
       $('#city_select').change(function () {
         var city = $(this).val();
 
