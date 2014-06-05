@@ -23,14 +23,18 @@
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript">
+    function toggle_checkbox(checkbox) {
+      checkbox.prop("checked", !checkbox.prop("checked"));
+    }
+
     $(document).ready(function(){
       $(".run").click(function(){
         var checkbox = $(this).find(":checkbox");
-        checkbox.prop("checked", !checkbox.prop("checked"));
+        toggle_checkbox(checkbox);
       })
 
       $(".checkbox input").click(function(){
-        $(this).prop("checked", !$(this).prop("checked"));
+        toggle_checkbox($(this));
       })
 
       $('#city_select').change(function () {
@@ -43,6 +47,14 @@
       })
 
       $('#city_select').change()
+
+      $("#select_all").click (function () {
+        var checkedStatus = this.checked;
+
+        $('.run').find(':checkbox').each(function () {
+          $(this).prop('checked', checkedStatus);
+        });
+      });
 
       $("#subscription_form").submit(function(e){
         e.preventDefault();
@@ -83,7 +95,7 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1>Привет, бегун!</h1>
+      <h1>Подпишись на забеги 2014 года</h1>
       <p>Здесь ты можешь подписаться на напоминания для любого забега в этом сезоне.</p>
     </div>
   </div>
@@ -118,7 +130,9 @@
                     <th title="Field #5">Дистанции (км)</th>
                     <th title="Field #6">Цена</th>
                     <th title="Field #7">Ссылка, контакт</th>
-                    <th title="Checkbox"></th>
+                    <th title="Checkbox">
+                      <input type="checkbox" id="select_all">
+                    </th>
                 </tr>
             </thead>
             <tbody>
