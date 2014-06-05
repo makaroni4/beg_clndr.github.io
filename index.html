@@ -18,6 +18,17 @@
         checkbox.prop("checked", !checkbox.prop("checked"));
       })
 
+      $('#city_select').change(function () {
+        var city = $(this).val();
+
+        $('.runs tbody tr').hide();
+        $('.runs tbody tr').filter(function () {
+          return $(this).find("td").first().text() == city;
+        }).show();
+      })
+
+      $('#city_select').change()
+
       $("#subscription_form").submit(function(e){
         e.preventDefault();
 
@@ -56,42 +67,616 @@
 
   <div class="container">
     <div class="row">
+      <div class="col-md-12" style="max-width: 400px;">
+        <p>
+        <form>
+          <label>Выберите город</label>
+          <select class="form-control" id="city_select">
+            <option>Москва</option>
+            <option>Минск</option>
+            <option>Санкт-Петербург</option>
+          </select>
+        </form>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
       <div class="col-md-12 table-responsive">
         <form class="form-inline" role="form" id="subscription_form">
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
-              </tr>
+          <table class="table table-striped table-bordered table-hover runs">
+          <thead>
+                <tr>
+                    <th title="Field #1">Город</th>
+                    <th title="Field #2">Дата проведения</th>
+                    <th title="Field #3">Название забега</th>
+                    <th title="Field #4" class="col-md-1">Адрес проведения, Трасса</th>
+                    <th title="Field #5">Дистанции (км)</th>
+                    <th title="Field #6">Цена</th>
+                    <th title="Field #7">Ссылка, контакт</th>
+                    <th title="Checkbox"></th>
+                </tr>
             </thead>
             <tbody>
-              <tr class="active">
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class="run" data-runid="1">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="1">
-                    </label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class="run" data-runid="2">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="2">
-                    </label>
-                  </div>
-                </td>
-              </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>24/05/2014</td>
+                    <td>Благотворительный пробег New Balance</td>
+                    <td>парк Сокольники</td>
+                    <td>10 км, 5 км, 1 км</td>
+                    <td></td>
+                    <td>http://nbrun.ru/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="1">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>5/31/14</td>
+                    <td>Благотворительный пробег СПОРТ ВО БЛАГО и Айсберри</td>
+                    <td>в Главном Ботаническом саду им. Н.В. Цицина</td>
+                    <td>10 км, 5 км</td>
+                    <td></td>
+                    <td>http://sportvoblago.ru/ru/probeg-iceberry</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="2">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>5/24/14</td>
+                    <td>«Беги за мной»</td>
+                    <td>Воробьевы горры</td>
+                    <td>7 км</td>
+                    <td></td>
+                    <td>http://zamnoy.org/news/vesenniy-zabeg-proekta-begi-za-mnoy/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="3">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>5/31/14</td>
+                    <td>Moscow Legal Run</td>
+                    <td>Парк «Новодевичьи пруды» м. Спортивная, Новодевичий проезд,  д. 1.</td>
+                    <td>10 км, 5 км</td>
+                    <td>1000</td>
+                    <td>http://moscowlegalrun.ru/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="4">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>6/4/14</td>
+                    <td>4-й Бабаевский марафон</td>
+                    <td></td>
+                    <td>42.195 км, 21.0975 км</td>
+                    <td></td>
+                    <td>http://www.babaevsky.maraforum.su</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="5">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>6/15/14</td>
+                    <td> Полумарафон «Лось»</td>
+                    <td>Восточный административный округ (ВАО) г. Москвы, район Метрогородок, Бумажная просека вход со стороны Лосиноостровской улицы. </td>
+                    <td>1,6,21 км</td>
+                    <td>100, 200, 700</td>
+                    <td>http://russiarace.com/2014/06/04/races-140615-losiash/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="6">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>6/1/14</td>
+                    <td>XXXIV Московский международный марафон мира</td>
+                    <td>на юго-востоке Москвы в Кузьминском парке вокруг Кузьминских прудов.</td>
+                    <td>42,195</td>
+                    <td>Бесплатно</td>
+                    <td>http://www.zareg.me/580</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="7">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>15/06/2014</td>
+                    <td>Медицинская тройка</td>
+                    <td>г. Москва, 2-й Краснокурсантский проезд, стадион «Энергия». </td>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="8">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>6/18/14</td>
+                    <td>Парковый пробег «Путяевский Лабиринт» 1 этап</td>
+                    <td>У Путяевских прудов</td>
+                    <td>15 км</td>
+                    <td>Бесплатно</td>
+                    <td>http://alex.dosugsport.ru/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="9">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>7/13/14</td>
+                    <td>XVII Лесной марафон &quot;Белочка&quot;</td>
+                    <td>Измайловский парк, стадион &quot;Авангард&quot;</td>
+                    <td>10,42 км</td>
+                    <td>-</td>
+                    <td>http://mosathletics.ru/2014/item/1956-25-06-2014.html</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="10">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>7/19/14</td>
+                    <td>2-ой Кузьминский марафон</td>
+                    <td>на юго-востоке Москвы в Кузьминском парке вокруг Кузьминских прудов.</td>
+                    <td>42 км 195 метров, 21 км 97,5 метров</td>
+                    <td>800, 1000</td>
+                    <td>http://www.kuzminki.maraforum.su/map_2013.html</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="11">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>7/12/14</td>
+                    <td>4-ый Метрогородокской марафон</td>
+                    <td>пересечение Бумажной просеки и Лосиноостровской улицы.</td>
+                    <td>50</td>
+                    <td>1000</td>
+                    <td>https://data.3sport.org/metrogorodok-2014</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="12">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>7/26/14</td>
+                    <td>Московский Марафон Ночной забег</td>
+                    <td>ОК «Лужники»</td>
+                    <td>10 км</td>
+                    <td>500</td>
+                    <td>http://newrunners.ru/race/nochnoj-zabeg-2014/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="13">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>7/19/14</td>
+                    <td>Кузьминский марафон</td>
+                    <td>Верхний Кузьминский пруд, 9:00</td>
+                    <td>42.195 км, 21.0975 км</td>
+                    <td></td>
+                    <td>http://probeg.org/card.php?id=1415</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="14">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>17/08/2014</td>
+                    <td>МУЗЫКАЛЬНЫЙ ПОЛУМАРАФОН</td>
+                    <td>Лужники</td>
+                    <td>10 км 21 км</td>
+                    <td>750, 1000</td>
+                    <td>http://newrunners.ru/race/muzykalnyj-polumarafon-2014/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="15">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>8/25/12</td>
+                    <td>Кросс «До свиданья, лето!»</td>
+                    <td>http://maps.yandex.ru/?um=d_G4kJqNnCL-cMnbr9DjZAcjTBMwOGB4&amp;l=map%2Ctrf</td>
+                    <td>8 км(муж), 4 км(жен), 2 км</td>
+                    <td></td>
+                    <td>http://o-sport.ru/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="16">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>8/24/14</td>
+                    <td>Марафон «Бег в помощь» в честь 75-летия Чиркова</td>
+                    <td>трасса КЛБ «МИР»,</td>
+                    <td></td>
+                    <td></td>
+                    <td>Тел. +7 499 137-57-95 Чирков Андрей Львович</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="17">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>21/09/2014</td>
+                    <td>Московский марафон</td>
+                    <td>http://newrunners.ru/mag/marshrut-moskovskogo-marafona-v-panoramah-yandeksk/</td>
+                    <td>10 км 42 км</td>
+                    <td>Бесплатно</td>
+                    <td>http://newrunners.ru/race/moskovskij-marafon-2014/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="18">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>28/09/2014 </td>
+                    <td>Благотворительный пробег 5275</td>
+                    <td>в Парке им. Горького</td>
+                    <td>5275 м</td>
+                    <td>откроется в июне</td>
+                    <td>http://www.5275.ru/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="19">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>9/20/14</td>
+                    <td>Кросс-пробег «BEZ AUTO»</td>
+                    <td>Крылатское, малое велокольцо,</td>
+                    <td>8.5 км, 4.3 км, 500 м</td>
+                    <td></td>
+                    <td>http://www.eventcons.ru/kontakty/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="20">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>9/1/14</td>
+                    <td>«We Run Moscow»</td>
+                    <td></td>
+                    <td>10 км</td>
+                    <td></td>
+                    <td>http://www.nike.com/ru/ru_ru/c/running</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="21">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>10/4/14</td>
+                    <td>5-й Осенний кросс-пробег в Садовниках памяти заслуженного тренера Михаила Леонидовича Полторака</td>
+                    <td>Парк Садовники, возле сцены., 13:30</td>
+                    <td>5 км, 2.5 км, 0.5 км</td>
+                    <td></td>
+                    <td>http://probeg.org/card.php?id=1408</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="22">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Москва</td>
+                    <td>10/12/14</td>
+                    <td>V Марафон «Лосиный остров»</td>
+                    <td>Бумажная просека,</td>
+                    <td>42.195 км, 21.0975 км, 100 км</td>
+                    <td></td>
+                    <td>http://www.msm.maraforum.su/3.html Дмитрий Ерохин тел. +7 925 542-12-40 5421240@gmail.com</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="23">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>5/4/14</td>
+                    <td>Пробег по юго-западным рубежам обороны ЛЕНИНГРАДА, посвященный Дню Победы</td>
+                    <td></td>
+                    <td>8 км, 4 км</td>
+                    <td>Бесплатно</td>
+                    <td>http://vk.com/cfksiz</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="24">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>6/14/14</td>
+                    <td>Традиционные соревнования по легкой атлетике для любителей бега «Самопреодолениие»</td>
+                    <td>ЦПКиО им. С. М. Кирова, 11:00</td>
+                    <td>4,7 км</td>
+                    <td>Бесплатно</td>
+                    <td>Информацию о месте регистрации и старта обязательно уточняйте по
+                        <br/>т. +7 911 935 40 23. http://ru.srichinmoyraces.org/races/russia/s-peterburg</td>
+                      <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="25">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>7/19/14</td>
+                    <td>Традиционные соревнования по легкой атлетике для любителей бега «Самопреодолениие»</td>
+                    <td>ЦПКиО им. С. М. Кирова, 11:00</td>
+                    <td>4,7 км</td>
+                    <td>Бесплатно</td>
+                    <td>Информацию о месте регистрации и старта обязательно уточняйте по
+                        <br/>т. +7 911 935 40 23. http://ru.srichinmoyraces.org/races/russia/s-peterburg</td>
+                </tr>
+                <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="26">
+                        </label>
+                      </div>
+                    </td>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>8/9/14</td>
+                    <td>Традиционный пробег в честь Дня Физкультурника</td>
+                    <td>ЦПКиО, Конюшенный корпус, 12-00</td>
+                    <td>10 км, 5 км</td>
+                    <td>Бесплатно</td>
+                    <td>Комитет по ФКиС Санкт-Петербурга, ЦПКиО им. С.М. Кирова тел. (812) 312-90-15, 430-00-81</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="27">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>6/29/14</td>
+                    <td>XXV Международный марафон &quot;ЭРГО БЕЛЫЕ НОЧИ&quot; </td>
+                    <td>Старт и финиш марафона на Дворцовой площади.</td>
+                    <td>6, 30 км</td>
+                    <td>500</td>
+                    <td>http://sportfolio.cc/event/view/1661</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="28">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>9/14/14</td>
+                    <td>Легкоатлетические соревнования «Петербургская миля» на призы трехкратной олимпийской чемпионки Татьяны Казанкиной</td>
+                    <td>Дворцовая площадь, 9:30</td>
+                    <td>1609 м</td>
+                    <td>Бесплатно</td>
+                    <td>Комитет по ФКиС Санкт-Петербурга, Федерация легкой атлетики, тел. (812) 312-90-15</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="29">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td></td>
+                    <td>XXXIII Пробег памяти по юго-западному рубежу обороны Ленинграда</td>
+                    <td>пр.Народного Ополчения, 201 (ж/д. ст. «Лигово», обелиск защитникам «Переднего края обороны Ленинград, 12:00</td>
+                    <td>10 км, 4 км, 2 км</td>
+                    <td>-</td>
+                    <td>Спортотдел Кировского района; СК “Кировец” тел. (812) 252-02-22, 783-62-41</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="30">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Санкт-Петербург</td>
+                    <td>10/25/14</td>
+                    <td>Пробег посвященный «Дню Народного Единства»</td>
+                    <td>ул. ПАРТИЗАНА ГЕРМАНА, 3, 12:00</td>
+                    <td>9 км, 5 км</td>
+                    <td></td>
+                    <td>http://vk.com/cfksiz</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="31">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Минск</td>
+                    <td>6/29/14</td>
+                    <td>«Тебе Беларусь посвящается» Республиканский легкоатлетический пробег посвященный дню Независимости</td>
+                    <td></td>
+                    <td>10 км, 4 км</td>
+                    <td></td>
+                    <td>http://www.klbviktoria.com/ БФЛА, +375 29 356-68-58 Зыков Сергей sukoww@tut.by</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="32">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Минск</td>
+                    <td>7/13/14</td>
+                    <td>500-й Юбилейнный марафон Романа Асаевича</td>
+                    <td>ул. Брестская 90,</td>
+                    <td>42.195 км,</td>
+                    <td>Бесплатно</td>
+                    <td>http://www.klbviktoria.com/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="33">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Минск</td>
+                    <td>8/23/14</td>
+                    <td>Марафон «Радуга»</td>
+                    <td></td>
+                    <td>42.195 км</td>
+                    <td></td>
+                    <td>http://meta42.by</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="34">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Минск</td>
+                    <td>9/7/14</td>
+                    <td>Пробег посвященный Дню Города на Кубок Мэра города</td>
+                    <td></td>
+                    <td>10 км, 4 км</td>
+                    <td></td>
+                    <td>БФЛА, +375 29 356-68-58 Зыков Сергей sukoww@tut.by</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="35">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Минск</td>
+                    <td>10/26/14</td>
+                    <td>Пробег «Мой родны кут»</td>
+                    <td>парк “Курасовщина”,</td>
+                    <td>42.195 км, 3 км</td>
+                    <td>Бесплатно</td>
+                    <td>http://www.klbviktoria.com/</td>
+                    <td class="run">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="36">
+                        </label>
+                      </div>
+                    </td>
+                </tr>
             </tbody>
           </table>
 
